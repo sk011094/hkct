@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from listings.choices import price_choices, bedroom_choices, district_choices
 
 # Create your views here.
 from .models import Listing
@@ -22,4 +23,13 @@ def listing(request, listing_id):
     return render(request,'listings/listing.html',context)
 
 def search(request):
-    return render(request,'listings/search.html')
+    listings = Listing.objects.order_by('-list_date').filter(is_published=True)
+    paginator = Paginator(listings, 4)
+    page = request.GET.get('page')
+    print(page)
+    paged_listings = paginator.get_page(page)
+    context = {'listings' : paged_listings,
+                'price_choices': price_choices,
+                'bedroom_choices':bedroom_choices,
+                'district_choices':district_choices}
+    return render(request,'listings/search.html', context)
