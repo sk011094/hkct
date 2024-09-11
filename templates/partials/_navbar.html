@@ -48,16 +48,28 @@
 
         <ul class="navbar-nav ml-auto">
           {% comment %} update active link {% endcomment %}
-          <li class="nav-item mr-3">
+          <li 
+          {% if 'register' in request.path %}
+          class="nav-item active mr-3 active"
+          {% else %}
+          class="nav-item mr-3"
+          {% endif %}>
+
              {% comment %} fix register.html link{% endcomment %}
-            <a class="nav-link" href="register.html">
+            <a class="nav-link" href={% url "register"%}>
               <i class="fas fa-user-plus"></i> Register</a
             >
-          </li>
+          </class=>
           {% comment %} update active link {% endcomment %}
-          <li class="nav-item mr-3">
+          <li 
+          {% if 'login' in request.path %}
+          class="nav-item active mr-3 active"
+          {% else %}
+          <li class="nav-item mr-3"
+          {% endif %}>
+          
              {% comment %} fix login.html link{% endcomment %}
-            <a class="nav-link" href="login.html">
+            <a class="nav-link" href={% url "login" %}>
               <i class="fas fa-sign-in-alt"></i>
 
               Login</a

@@ -64,5 +64,6 @@ def search(request):
                 'bedroom_choices':bedroom_choices,
                 'listings':queryset_list,
                 'values':request.GET,
+                'total' : len(queryset_list)
                 }
     return render(request,'listings/search.html', context)
