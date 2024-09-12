@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'realtors.apps.RealtorsConfig',
     'django.contrib.humanize',
     'accounts.apps.AccountsConfig',
+    'contacts.apps.ContactsConfig',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,9 @@ MESSAGE_TAGS ={
     messages.INFO : 'info',
     messages.WARNING : 'warning'
     }
+
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER ='finalprojectyiu@gmail.com'
+EMAIL_HOST_PASSWORD = 'Hongkong528'
+EMAIL_USE_TLS = True
