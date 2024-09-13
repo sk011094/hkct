@@ -22,11 +22,12 @@ def contact(request):
                 return redirect('/listings/'+listing_id)
             contact = Contact(listing=listing, listing_id=listing_id, name=name, email=email, phone=phone, message=message, user_id=user_id,)
             contact.save()
-           # send_mail(
-            #    "Property Listing",
-            #   "finalprojectyiu@gamil.com",#from email
-             #   [finalprojectyiu@gamil.com'],#to email
-              #  fail_silently=False
-           # )
+            send_mail(
+                "Property Listing",
+                "There has been an inquiry for" + listing + " . Sign into the admin panel for more info",
+                "sinyili2004@yahoo.com.hk",
+                ['sinyili2004@gmail.com'],
+                fail_silently=False,
+            )
             messages.success(request,'Your request has been submitted, a realtor will get back to you soon')
     return redirect('/listings/' + listing_id)
